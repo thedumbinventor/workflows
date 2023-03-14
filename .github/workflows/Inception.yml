@@ -23,7 +23,7 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Copy file1 to file2
-        run: |
+        run:
          cp file1 file2
          git add file2
          git commit -m "Copy contents of file1 to file2"

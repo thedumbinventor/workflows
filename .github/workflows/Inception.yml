@@ -1,30 +1,17 @@
-# This is a basic workflow to help you get started with Actions
+name: Copy File 1 to File 2
 
-name: Copy file1 to file2
+on: [push]
 
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   copy-file:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout code
-      - uses: actions/workflows@v2
-
-      # Runs a set of commands using the runners shell
-      - name: Copy file1 to file2
-        run:
-         cp file1 file2
-         git add file2
-         git commit -m "Copy contents of file1 to file2"
-         git push
+    - uses: actions/checkout@v2
+    - name: Copy file
+      run: |
+        cp file1.txt file2.txt
+        git config --global user.email "you@example.com"
+        git config --global user.name "Your Name"
+        git add .
+        git commit -m "Copy file1.txt to file2.txt"
+        git push
